@@ -590,6 +590,85 @@
                 opacity: 0;
             }
         }
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-visual {
+                height: auto;
+                margin-top: 2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.95);
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+                z-index: 1001;
+                color: var(--light);
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+                text-align: center;
+            }
+
+            .portfolio-image {
+                font-size: 2rem;
+                height: 150px;
+            }
+
+            .window-header {
+                justify-content: center;
+            }
+
+            .code-content {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
