@@ -890,7 +890,7 @@ footer {
 }
 
 .holograma {
-  width: 100%;
+  width: 150%;
   max-width: 200px; /* limite o tamanho máximo */
   height: auto;
     transform-origin: center;
