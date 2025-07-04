@@ -120,30 +120,45 @@ if (statsSection) {
     statsObserver.observe(statsSection);
 }
 
-// Typing animation for code
 function typeCode() {
     const codeElement = document.querySelector('.typing-animation');
-    const code = `class EnzzoSoftDev {
-constructor() {
-this.nome = 'EnzzoSoftDev';
-this.missao = 'Transformar ideias 
-em soluções digitais';}}`;
-    let i = 0;
-    codeElement.innerHTML = '';
+    const lines = [
+        "class EnzzoSoftDev {",
+            "  constructor() {",
+            "    this.visao = 'Excelência em software';",
+            "    this.especialidade = 'Web & APIs';",
+            "  }",
+        "}"
 
-    function typeWriter() {
-        if (i < code.length) {
-            if (code.charAt(i) === '\n') {
-                codeElement.innerHTML += '<br>';
+    ];
+
+    let lineIndex = 0;
+
+    function typeLine() {
+        if (lineIndex >= lines.length) return;
+
+        const line = lines[lineIndex];
+        const lineDiv = document.createElement('div');
+        codeElement.appendChild(lineDiv);
+
+        let charIndex = 0;
+
+        function typeChar() {
+            if (charIndex < line.length) {
+                lineDiv.textContent += line[charIndex];
+                charIndex++;
+                setTimeout(typeChar, 40);
             } else {
-                codeElement.innerHTML += code.charAt(i);
+                lineIndex++;
+                setTimeout(typeLine, 300);
             }
-            i++;
-            setTimeout(typeWriter, 50);
         }
+
+        typeChar();
     }
 
-    setTimeout(typeWriter, 1000);
+    codeElement.innerHTML = '';
+    typeLine();
 }
 
 // Service cards hover effect
@@ -184,6 +199,7 @@ window.addEventListener('scroll', () => {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    typeCode();
     const form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', () => {

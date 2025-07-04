@@ -876,19 +876,19 @@ footer {
 /* HOLOGRAMA ANIMADO AVANÇADO */
 .holograma-container {
     position: relative;
-    width: 100px; /* menor que antes */
-    margin: 5rem auto 2rem;
+    width: 120px; /* menor que antes */
+    margin: 10rem auto rem;
     animation: none; /* tiramos o loop aqui e controlamos pelo próprio holograma */
     filter: drop-shadow(0 0 15px var(--secondary));
-    z-index: 10;
+    z-index: 152;
 }
 
 .holograma {
-  width: 100%;
-  max-width: 200px; /* limite o tamanho máximo */
+  width: 85%;
+  max-width: 500px; /* limite o tamanho máximo */
   height: auto;
     transform-origin: center;
-    animation: holograma-cycle 10s infinite;
+    animation: holograma-cycle 5s infinite;
     animation-fill-mode: forwards;
     transition: all 0.3s ease-in-out;
 }
@@ -974,13 +974,13 @@ footer {
   pointer-events: none;
   z-index: 0;
 }
-.typing-animation::after {
-  content: '|';
-  animation: blink 0.8s infinite;
-  color: #00ff88;
+.typing-animation div::after {
+    content: '|';
+    animation: blink 1s infinite;
+    margin-left: 2px;
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
