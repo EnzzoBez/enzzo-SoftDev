@@ -974,3 +974,13 @@ footer {
   pointer-events: none;
   z-index: 0;
 }
+.typing-animation::after {
+  content: '|';
+  animation: blink 0.8s infinite;
+  color: #00ff88;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

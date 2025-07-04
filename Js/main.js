@@ -185,7 +185,6 @@ window.addEventListener('scroll', () => {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contactForm');
-
     if (form) {
         form.addEventListener('submit', () => {
             const submitBtn = form.querySelector('button[type="submit"]');
@@ -341,4 +340,62 @@ class LightningStorm {
 document.addEventListener('DOMContentLoaded', () => {
     new SparkGenerator('sparkContainer', 100);
     new LightningStorm('lightningCanvas');
+});
+function decryptTextEffect(elementId, finalText, speed = 50) {
+    const chars = '!@#$%^&*()_+{}[]<>?|;:abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const element = document.getElementById(elementId);
+    let iteration = 0;
+
+    const interval = setInterval(() => {
+        let displayText = '';
+        for (let i = 0; i < finalText.length; i++) {
+            if (i < iteration) {
+                displayText += finalText[i];
+            } else {
+                displayText += chars[Math.floor(Math.random() * chars.length)];
+            }
+        }
+
+        element.textContent = displayText;
+
+        if (iteration >= finalText.length) {
+            clearInterval(interval);
+            element.textContent = finalText;
+        }
+
+        iteration++;
+    }, speed);
+}
+
+// Executa o efeito ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    const logo = document.getElementById('logoTitle');
+    const originalText = logo.textContent;
+    decryptTextEffect('logoTitle', originalText, 60);
+});
+function typeCodeEffect(elementId, speed = 40) {
+    const el = document.getElementById(elementId);
+    const text = el.getAttribute('data-text');
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            const char = text[index] === '\n' ? '<br>' : text[index] === ' ' ? '&nbsp;' : text[index];
+            el.innerHTML += char;
+            index++;
+            setTimeout(type, speed);
+        }
+    }
+
+    type();
+}
+
+// Rodar ao carregar
+document.addEventListener('DOMContentLoaded', () => {
+    typeCodeEffect('typingTarget', 40);
+
+    // (manter seus outros efeitos se tiver)
+    new SparkGenerator('sparkContainer', 100);
+    new LightningStorm('lightningCanvas');
+    decryptTextEffect('logoTitle', "Enzzo'SoftDev", 60);
 });
