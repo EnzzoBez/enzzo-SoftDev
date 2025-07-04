@@ -43,26 +43,23 @@ window.addEventListener('scroll', () => {
 // Contact form handling
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    // Get form data
+
     const formData = new FormData(this);
     const name = formData.get('name');
     const email = formData.get('email');
     const subject = formData.get('subject');
     const message = formData.get('message');
-    
-    // Simple validation
+
     if (!name || !email || !subject || !message) {
         alert('Por favor, preencha todos os campos.');
         return;
     }
-    
-    // Simulate form submission
+
     const submitBtn = this.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Enviando...';
     submitBtn.disabled = true;
-    
+
     setTimeout(() => {
         alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
         this.reset();
@@ -75,7 +72,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 function createParticles() {
     const particlesContainer = document.getElementById('particles');
     const particleCount = 50;
-    
+
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -97,15 +94,15 @@ mobileMenu.addEventListener('click', () => {
 // Counter animation for stats
 function animateCounters() {
     const counters = document.querySelectorAll('.stat-number');
-    
+
     counters.forEach(counter => {
         const target = parseInt(counter.textContent.replace('+', '').replace('%', ''));
         const isPercentage = counter.textContent.includes('%');
         const isPlus = counter.textContent.includes('+');
         const isTime = counter.textContent.includes('/');
-        
-        if (isTime) return; // Skip 24/7
-        
+
+        if (isTime) return;
+
         let current = 0;
         const increment = target / 50;
         const timer = setInterval(() => {
@@ -114,11 +111,11 @@ function animateCounters() {
                 current = target;
                 clearInterval(timer);
             }
-            
+
             let displayValue = Math.ceil(current);
             if (isPercentage) displayValue += '%';
             if (isPlus) displayValue += '+';
-            
+
             counter.textContent = displayValue;
         }, 40);
     });
@@ -149,7 +146,7 @@ this.missao = 'Transformar ideias
 em soluções digitais';}`;
     let i = 0;
     codeElement.innerHTML = '';
-    
+
     function typeWriter() {
         if (i < code.length) {
             if (code.charAt(i) === '\n') {
@@ -161,7 +158,7 @@ em soluções digitais';}`;
             setTimeout(typeWriter, 50);
         }
     }
-    
+
     setTimeout(typeWriter, 1000);
 }
 
@@ -170,7 +167,7 @@ document.querySelectorAll('.service-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-20px) scale(1.02)';
     });
-    
+
     card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0) scale(1)';
     });
@@ -182,7 +179,7 @@ document.querySelectorAll('.portfolio-item').forEach(item => {
         const image = this.querySelector('.portfolio-image');
         image.style.transform = 'scale(1.1)';
     });
-    
+
     item.addEventListener('mouseleave', function() {
         const image = this.querySelector('.portfolio-image');
         image.style.transform = 'scale(1)';
@@ -194,19 +191,18 @@ window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const heroContent = document.querySelector('.hero-content');
     const heroVisual = document.querySelector('.hero-visual');
-    
+
     if (heroContent && heroVisual) {
         heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
         heroVisual.style.transform = `translateY(${scrolled * 0.3}px)`;
     }
 });
 
-// Initialize everything when DOM is loaded
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     createParticles();
     typeCode();
-    
-    // Add active class to first nav item
+
     const currentHash = window.location.hash || '#home';
     const activeLink = document.querySelector(`a[href="${currentHash}"]`);
     if (activeLink) {
@@ -218,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
-    
+
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
@@ -227,7 +223,7 @@ window.addEventListener('scroll', () => {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
@@ -241,7 +237,7 @@ window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
 
-// Smooth reveal animation for elements
+// Smooth reveal animation
 const revealElements = document.querySelectorAll('.service-card, .portfolio-item, .contact-item');
 
 const revealObserver = new IntersectionObserver((entries) => {
