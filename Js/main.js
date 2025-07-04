@@ -424,4 +424,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     });
     footerObserver.observe(footer);
+    const javaCodeSample = `public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Bem-vindo à Enzzo'SoftDev!");
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Linha de código: " + i);
+        }
+    }
+}`;
+
+function typeJavaCodeEffect(targetId, code, speed = 20) {
+    const el = document.getElementById(targetId);
+    let i = 0;
+
+    function type() {
+        if (i < code.length) {
+            el.textContent += code.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+
+    type();
+}
+
+// No final do DOMContentLoaded
+typeJavaCodeEffect("javaCode", javaCodeSample);
+
 });
+const javaCodeSample = `public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Bem-vindo à Enzzo'SoftDev!");
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Linha de código: " + i);
+        }
+    }
+}`;
+
+function typeJavaCodeEffect(targetId, code, speed = 20) {
+    const el = document.getElementById(targetId);
+    let i = 0;
+
+    function type() {
+        if (i < code.length) {
+            el.textContent += code.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+
+    type();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    typeJavaCodeEffect("javaCode", javaCodeSample, 25);
+    decryptTextEffect('logoTitle', "Enzzo'SoftDev", 60);
+    new SparkGenerator('sparkContainer', 100);
+    new LightningStorm('lightningCanvas');
+});
+
