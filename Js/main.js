@@ -414,4 +414,14 @@ document.addEventListener('DOMContentLoaded', () => {
     new SparkGenerator('sparkContainer', 100);
     new LightningStorm('lightningCanvas');
     decryptTextEffect('logoTitle', "Enzzo'SoftDev", 60);
+
+    // Observer para ativar a descriptografia no rodapé quando ele entrar na tela
+    const footer = document.getElementById('footerText');
+    const footerObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+        decryptTextEffect('footerText', footer.textContent, 50);
+        footerObserver.disconnect(); // só uma vez
+    }
+    });
+    footerObserver.observe(footer);
 });
