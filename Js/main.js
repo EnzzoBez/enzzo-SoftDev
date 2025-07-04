@@ -40,7 +40,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Contact form handling
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -60,12 +59,28 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     submitBtn.textContent = 'Enviando...';
     submitBtn.disabled = true;
 
-    setTimeout(() => {
-        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-        this.reset();
+    fetch('contact.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(response => {
+        if (response === 'ok') {
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            this.reset();
+        } else {
+            alert('Ocorreu um erro ao enviar a mensagem. Tente novamente.');
+            console.error(response);
+        }
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
-    }, 2000);
+    })
+    .catch(error => {
+        alert('Erro na requisição.');
+        console.error(error);
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    });
 });
 
 // Create particles

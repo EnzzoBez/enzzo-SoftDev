@@ -1,18 +1,28 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST['name'];
-    $email = $_POST['email'];
-    $assunto = $_POST['subject'];
-    $mensagem = $_POST['message'];
+// Configurações
+$destinatario = "enzzodbez@gmail.com"; // <-- Coloque seu e-mail real aqui
 
-    $to = "enzzodbez@gmail.com"; // Coloque aqui seu e-mail real
-    $body = "Nome: $nome\nE-mail: $email\nAssunto: $assunto\nMensagem:\n$mensagem";
-    $headers = "From: $email";
+// Pega os dados enviados via POST
+$nome = $_POST['name'] ?? '';
+$email = $_POST['email'] ?? '';
+$assunto = $_POST['subject'] ?? '';
+$mensagem = $_POST['message'] ?? '';
 
-    if (mail($to, $assunto, $body, $headers)) {
-        echo "Mensagem enviada com sucesso!";
-    } else {
-        echo "Erro ao enviar a mensagem.";
-    }
+// Monta o conteúdo do e-mail
+$corpo = "Nome: $nome\n";
+$corpo .= "E-mail: $email\n";
+$corpo .= "Assunto: $assunto\n";
+$corpo .= "Mensagem:\n$mensagem\n";
+
+// Cabeçalhos
+$headers = "From: $email\r\n";
+$headers .= "Reply-To: $email\r\n";
+
+// Envia o e-mail
+if (mail($destinatario, $assunto, $corpo, $headers)) {
+    echo "ok";
+} else {
+    http_response_code(500);
+    echo "Erro ao enviar mensagem.";
 }
 ?>
