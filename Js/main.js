@@ -183,14 +183,17 @@ window.addEventListener('scroll', () => {
 });
 
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    createParticles();
-    typeCode();
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
 
-    const currentHash = window.location.hash || '#home';
-    const activeLink = document.querySelector(`a[href="${currentHash}"]`);
-    if (activeLink) {
-        activeLink.classList.add('active');
+    if (form) {
+        form.addEventListener('submit', () => {
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.textContent = 'Enviando...';
+                submitBtn.disabled = true;
+            }
+        });
     }
 });
 
