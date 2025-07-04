@@ -40,48 +40,16 @@ window.addEventListener('scroll', () => {
     }
 });
 
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const formData = new FormData(this);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const subject = formData.get('subject');
-    const message = formData.get('message');
-
-    if (!name || !email || !subject || !message) {
-        alert('Por favor, preencha todos os campos.');
-        return;
-    }
-
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Enviando...';
-    submitBtn.disabled = true;
-
-    fetch('contact.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(response => {
-        if (response === 'ok') {
-            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-            this.reset();
-        } else {
-            alert('Ocorreu um erro ao enviar a mensagem. Tente novamente.');
-            console.error(response);
+// Opcional: mostrar "Enviando..." no botão quando o formulário for enviado
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', () => {
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.textContent = 'Enviando...';
         }
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    })
-    .catch(error => {
-        alert('Erro na requisição.');
-        console.error(error);
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
     });
-});
+}
 
 // Create particles
 function createParticles() {
@@ -158,7 +126,7 @@ function typeCode() {
 constructor() {
 this.nome = 'EnzzoSoftDev';
 this.missao = 'Transformar ideias 
-em soluções digitais';}`;
+em soluções digitais';}}`;
     let i = 0;
     codeElement.innerHTML = '';
 
