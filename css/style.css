@@ -562,6 +562,19 @@ footer {
         opacity: 0;
     }
 }
+#logoTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #00ff88, #000000);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: logoGradientAnim 4s ease-in-out infinite;
+  display: inline-block;
+}
+
 
 /* === RESPONSIVE DESIGN OTIMIZADO === */
 
@@ -633,18 +646,17 @@ footer {
     padding-left: 0.5rem;
     font-size: 1.5rem;
   }
-  #logoTitle {
-  font-size: 1.8rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #00ff88, #000000);
-  background-size: 200% auto;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  animation: logoGradientAnim 4s ease-in-out infinite;
+@keyframes logoGradientAnim {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
 }
-
 
   /* Hero Section: padding ajustado e altura automática */
   .hero {
