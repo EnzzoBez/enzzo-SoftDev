@@ -43,12 +43,13 @@ window.addEventListener('scroll', () => {
 // Opcional: mostrar "Enviando..." no botão quando o formulário for enviado
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', () => {
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        if (submitBtn) {
-            submitBtn.textContent = 'Enviando...';
-        }
-    });
+  contactForm.addEventListener('submit', () => {
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.disabled = true;
+    }
+  });
 }
 
 // Create particles
