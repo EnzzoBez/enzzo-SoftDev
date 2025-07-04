@@ -873,7 +873,7 @@ footer {
   background-color: #3fe70c; /* Cor verde neon */
   border-radius: 50%; /* Deixa as faíscas arredondadas */
   box-shadow: 0 0 8px #030303; /* Sombra para dar brilho */
-  opacity: 0.9; /* Transparência */
+  opacity: 0.7; /* Transparência */
   animation: float-up linear forwards; /* Animação para subir lentamente e sumir */
   z-index: 1; /* Fica abaixo do holograma */
 }
