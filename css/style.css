@@ -869,11 +869,11 @@ footer {
 .spark {
   position: absolute; /* Posiciona relativo ao container pai */
   width: 3px;
-  height: 2px;
+  height: 5px;
   background-color: #3fe70c; /* Cor verde neon */
   border-radius: 50%; /* Deixa as faíscas arredondadas */
-  box-shadow: 0 0 8px #1d1f1e; /* Sombra para dar brilho */
-  opacity: 0.8; /* Transparência */
+  box-shadow: 0 0 8px #030303; /* Sombra para dar brilho */
+  opacity: 0.9; /* Transparência */
   animation: float-up linear forwards; /* Animação para subir lentamente e sumir */
   z-index: 1; /* Fica abaixo do holograma */
 }
