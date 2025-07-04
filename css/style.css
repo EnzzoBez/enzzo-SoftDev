@@ -11,6 +11,8 @@
     --light: #ffffff;
     --gray: #333333;
     --accent: #ff0066;
+    --holo-glow-primary: #1619d6;
+    --holo-glow-secondary: #1ed891;
 }
 
 body {
@@ -752,6 +754,7 @@ footer {
     display: flex;
     justify-content: center;
     padding: 1rem;
+    color: #02ad02
   }
 }
 
@@ -782,97 +785,123 @@ footer {
     }
 }
 /* HOLOGRAMA ANIMADO AVANÇADO */
+/* Container do holograma, controla tamanho, posicionamento e efeito de sombra */
 .holograma-container {
     position: relative;
-    width: 120px; /* menor que antes */
-    margin: 10rem auto rem;
-    animation: none; /* tiramos o loop aqui e controlamos pelo próprio holograma */
-    filter: drop-shadow(0 0 15px var(--secondary));
-    z-index: 152;
+    width: 120px; /* Define a largura do container do holograma */
+    margin: 10rem auto rem; /* Centraliza com margem vertical e horizontal */
+    animation: none; /* Remove animação do container para controlar pelo holograma interno */
+    filter: drop-shadow(0 0 15px var(--secondary)); /* Sombra colorida suave */
+    z-index: 152; /* Garante que fique acima de outros elementos */
 }
 
+/* Estilo da imagem do holograma */
 .holograma {
-  width: 85%;
-  max-width: 500px; /* limite o tamanho máximo */
-  height: auto;
-    transform-origin: center;
-    animation: holograma-cycle 5s infinite;
-    animation-fill-mode: forwards;
-    transition: all 0.3s ease-in-out;
+  width: 85%; /* Largura relativa ao container */
+  max-width: 500px; /* Limite máximo da largura */
+  height: auto; /* Mantém proporção da imagem */
+  transform-origin: center; /* Origem da transformação no centro da imagem */
+  animation: holograma-cycle 5s infinite; /* Animação contínua de 5 segundos */
+  animation-fill-mode: forwards; /* Mantém estado final da animação */
+  transition: all 0.3s ease-in-out; /* Transições suaves em transformações */
 }
 
-/* Animação completa: entrada + gesto + brilho + saída + 2s parado */
+/* Animação do holograma com efeitos de entrada, brilho, rotação e saída */
 @keyframes holograma-cycle {
-    0%   { opacity: 0; transform: scale(0.85) translateY(30px); }
-    5%   { opacity: 1; transform: scale(1) translateY(0); }
-
-    10%, 30% {
-        transform: rotate(1deg);
-        filter: brightness(1.6) drop-shadow(0 0 18px var(--secondary));
-    }
-
-    40%, 60% {
-        transform: rotate(-2deg);
-        filter: brightness(1.5) drop-shadow(0 0 15px var(--primary));
-    }
-
-    70% {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    80% {
-        opacity: 0;
-        transform: scale(0.85) translateY(30px);
-    }
-
-    81% {
-        opacity: 0; /* início do "tempo parado" */
-        transform: scale(0.85) translateY(30px);
-    }
-
-    100% {
-        opacity: 0;
-        transform: scale(0.85) translateY(30px);
-    }
-}
-* {
-  max-width: 100%;
-  box-sizing: border-box;
-  word-wrap: break-word; /* quebra palavras muito longas */
-}
-.spark {
-  position: absolute;
-  width: 3px;
-  height: 2px;
-  background-color: #0ef321;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #1d1f1e;
-  opacity: 0.8;
-  animation: float-up linear forwards;
-  z-index: 1;
-}
-
-@keyframes float-up {
+  
+  /* Início da animação: imagem invisível, menor e deslocada para baixo */
   0% {
-    transform: translateY(0) scale(1);
+    opacity: 0;
+    transform: scale(0.85) translateY(30px);
+  }
+
+  /* Fase de entrada: imagem aparece e vai para sua posição original */
+  20% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  /* Efeito de rotação e brilho neon com cor secundária (ex: azul/ciano) */
+  10%, 10% {
+    transform: rotate(1deg);
+    filter: brightness(1.0) drop-shadow(0 0 18px var(--holo-glow-secondary));
+  }
+
+  /* Rotação para o outro lado e brilho com a cor primária (ex: roxo/rosa) */
+  40%, 60% {
+    transform: rotate(-2deg);
+    filter: brightness(1.5) drop-shadow(0 0 15px var(--holo-glow-primary));
+  }
+
+  /* Ponto final da exibição: tamanho normal, visível, sem rotação */
+  70% {
+    transform: scale(1);
     opacity: 1;
   }
-  100% {
-    transform: translateY(-100vh) scale(0.5);
+
+  /* Início da saída: imagem desaparece, volta a ser menor e deslocada */
+  80% {
     opacity: 0;
+    transform: scale(0.85) translateY(30px);
+  }
+
+  /* Pequena pausa invisível antes de reiniciar o ciclo */
+  81% {
+    opacity: 0;
+    transform: scale(0.95) translateY(30px);
+  }
+
+  /* Fim do ciclo, prepara para repetir exatamente como no início */
+  100% {
+    opacity: 0; /* Corrigido: era 5, valor máximo permitido é 1 */
+    transform: scale(0.85) translateY(30px);
   }
 }
 
+/* Aplica para todos os elementos */
+* {
+  max-width: 100%; /* Garante que nenhum elemento ultrapasse a largura da tela */
+  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+  word-wrap: break-word; /* Quebra palavras muito longas para evitar overflow */
+}
+
+/* Estilo dos pequenos "faíscas" que flutuam */
+.spark {
+  position: absolute; /* Posiciona relativo ao container pai */
+  width: 3px;
+  height: 2px;
+  background-color: #3fe70c; /* Cor verde neon */
+  border-radius: 50%; /* Deixa as faíscas arredondadas */
+  box-shadow: 0 0 8px #1d1f1e; /* Sombra para dar brilho */
+  opacity: 0.8; /* Transparência */
+  animation: float-up linear forwards; /* Animação para subir lentamente e sumir */
+  z-index: 1; /* Fica abaixo do holograma */
+}
+
+/* Animação que move as faíscas para cima e as reduz até sumir */
+@keyframes float-up {
+  0% {
+    transform: translateY(0) scale(1); /* Começa na posição normal, tamanho normal */
+    opacity: 1; /* Totalmente visível */
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.5); /* Sobe uma altura total da viewport e encolhe */
+    opacity: 0; /* Desaparece */
+  }
+}
+
+/* Container para as faíscas, ocupa toda a tela e não interfere em cliques */
 .spark-container {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 1;
+  width: 100vw; /* largura total da viewport */
+  height: 100vh; /* altura total da viewport */
+  pointer-events: none; /* Permite clicar através dele */
+  z-index: 1; /* Atrás de elementos interativos */
 }
+
+/* Canvas para efeitos de "raios" ou luz, também fixa e atrás de tudo */
 .lightning-canvas {
   position: fixed;
   top: 0;
@@ -882,13 +911,16 @@ footer {
   pointer-events: none;
   z-index: 0;
 }
+
+/* Cursor de digitação piscante após cada div da animação de texto */
 .typing-animation div::after {
-    content: '|';
-    animation: blink 1s infinite;
-    margin-left: 2px;
+    content: '|'; /* Barra vertical para o cursor */
+    animation: blink 1s infinite; /* Pisca a cada 1 segundo */
+    margin-left: 2px; /* Espaço após o texto */
 }
 
+/* Animação do cursor piscando */
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    0%, 100% { opacity: 1; } /* Visível */
+    50% { opacity: 0; } /* Invisível na metade do ciclo */
 }
