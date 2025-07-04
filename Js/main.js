@@ -124,9 +124,9 @@ function typeCode() {
     const codeElement = document.querySelector('.typing-animation');
     const lines = [
         "class EnzzoSoftDev {",
-            "  constructor() {",
-            "    this.visao = 'Excelência em software';",
-            "    this.especialidade = 'Web & APIs';",
+            " constructor() {",
+            " this.visao = 'Excelência em software';",
+            "this.especialidade = 'Web & APIs';",
             "  }",
         "}"
 
