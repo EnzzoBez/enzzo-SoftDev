@@ -245,3 +245,100 @@ revealElements.forEach(element => {
     element.style.transition = 'all 0.6s ease';
     revealObserver.observe(element);
 });
+class Spark {
+    constructor(container) {
+        this.container = container;
+        this.spark = document.createElement('div');
+        this.spark.classList.add('spark');
+        this.init();
+    }
+
+    init() {
+        this.spark.style.left = Math.random() * window.innerWidth + 'px';
+        this.spark.style.bottom = '0px';
+        this.spark.style.animationDuration = (2 + Math.random() * 3) + 's';
+        this.container.appendChild(this.spark);
+
+        setTimeout(() => this.spark.remove(), 5000);
+    }
+}
+
+class SparkGenerator {
+    constructor(containerId, interval = 100) {
+        this.container = document.getElementById(containerId);
+        this.interval = interval;
+        this.start();
+    }
+
+    start() {
+        setInterval(() => {
+            new Spark(this.container);
+        }, this.interval);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new SparkGenerator('sparkContainer', 100);
+});
+class LightningBolt {
+    constructor(svg) {
+        this.svg = svg;
+        this.draw();
+    }
+
+    draw() {
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+        const startX = Math.random() * window.innerWidth;
+        let x = startX;
+        let y = 0;
+        let pathData = `M ${x} ${y}`;
+        const segments = 10 + Math.floor(Math.random() * 5);
+
+        for (let i = 0; i < segments; i++) {
+            x += (Math.random() - 0.5) * 40;
+            y += window.innerHeight / segments;
+            pathData += ` L ${x} ${y}`;
+        }
+
+        path.setAttribute("d", pathData);
+        path.setAttribute("stroke", "#ffffff");
+        path.setAttribute("stroke-width", "2");
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke-linecap", "round");
+        path.setAttribute("stroke-linejoin", "round");
+        path.setAttribute("opacity", "0.8");
+
+        this.svg.appendChild(path);
+
+        // fade-out e remoção
+        setTimeout(() => {
+            path.style.transition = "opacity 0.5s ease-out";
+            path.style.opacity = "0";
+            setTimeout(() => path.remove(), 500);
+        }, 300);
+    }
+}
+
+class LightningStorm {
+    constructor(svgId, minDelay = 2000, maxDelay = 6000) {
+        this.svg = document.getElementById(svgId);
+        this.minDelay = minDelay;
+        this.maxDelay = maxDelay;
+        this.scheduleNext();
+    }
+
+    scheduleNext() {
+        const delay = Math.random() * (this.maxDelay - this.minDelay) + this.minDelay;
+        setTimeout(() => {
+            new LightningBolt(this.svg);
+            this.scheduleNext();
+        }, delay);
+    }
+}
+
+// Inicialização junto com as faíscas
+document.addEventListener('DOMContentLoaded', () => {
+    new SparkGenerator('sparkContainer', 100);
+    new LightningStorm('lightningCanvas');
+});
