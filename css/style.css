@@ -209,16 +209,16 @@ nav {
 .dot-green { background: #27ca3f; }
 
 .code-content {
-    color: var(--secondary);
-    font-size: 14px;
+    font-family: monospace;
+    font-size: 13px;
     line-height: 1.4;
-}
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
 
 .typing-animation {
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-}
+    display: block;
+  }
 
 /* Sections */
 section {
@@ -663,7 +663,11 @@ footer {
   }
 
   .code-window {
-    padding: 15px;
+    width: 100%;
+    max-width: 360px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 1rem;
     overflow-x: auto;
   }
 
@@ -741,27 +745,15 @@ footer {
 }
 
 /* Orientação landscape para smartphones */
-@media (max-width: 768px) and (orientation: landscape) {
-    .hero {
-        min-height: 100vh;
-    }
-
-    .hero-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-    }
-
-    .hero-text {
-        text-align: left;
-    }
-
-    .hero-text h1 {
-        font-size: 2rem;
-    }
-
-    .hero-visual {
-        height: 250px;
-    }
+@media (max-width: 768px) {
+  .hero-visual  {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    color: #eb0e0e
+  }
 }
 
 /* Melhorias para touch */
