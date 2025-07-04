@@ -830,7 +830,7 @@ footer {
   /* Rotação para o outro lado e brilho com a cor primária (ex: roxo/rosa) */
   40%, 60% {
     transform: rotate(-2deg);
-    filter: brightness(1.5) drop-shadow(0 0 15px var(--holo-glow-primary));
+    filter: brightness(1.0) drop-shadow(0 0 15px var(--holo-glow-primary));
   }
 
   /* Ponto final da exibição: tamanho normal, visível, sem rotação */
