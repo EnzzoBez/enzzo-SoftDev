@@ -1,4 +1,4 @@
-// Smooth scrolling for navigation links
+// Smooth scrolling para links de navegação internos
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -12,7 +12,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Animate elements on scroll
+// Animação ao rolar (IntersectionObserver)
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -30,7 +30,7 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
 });
 
-// Header background on scroll
+// Fundo do header ao rolar a página
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
     if (window.scrollY > 100) {
@@ -40,42 +40,28 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Opcional: mostrar "Enviando..." no botão quando o formulário for enviado
+// Formulário: botão "Enviando..." ao submeter
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', () => {
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    if (submitBtn) {
-      submitBtn.textContent = 'Enviando...';
-      submitBtn.disabled = true;
-    }
-  });
+    contactForm.addEventListener('submit', () => {
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+        }
+    });
 }
 
-// Create particles
-function createParticles() {
-    const particlesContainer = document.getElementById('particles');
-    const particleCount = 50;
-
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 15 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        particlesContainer.appendChild(particle);
-    }
-}
-
-// Mobile menu toggle
+// Mobile menu toggle (se existir)
 const mobileMenu = document.querySelector('.mobile-menu');
 const navLinks = document.querySelector('.nav-links');
+if (mobileMenu && navLinks) {
+    mobileMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+}
 
-mobileMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-
-// Counter animation for stats
+// Contador animado para estatísticas
 function animateCounters() {
     const counters = document.querySelectorAll('.stat-number');
 
@@ -105,31 +91,32 @@ function animateCounters() {
     });
 }
 
-// Trigger counter animation when stats section is visible
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateCounters();
-            statsObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-
+// Ativa animação dos contadores quando a seção estiver visível
 const statsSection = document.querySelector('.stats-grid');
 if (statsSection) {
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
     statsObserver.observe(statsSection);
 }
 
+// Efeito de digitação para código (tipo terminal)
 function typeCode() {
     const codeElement = document.querySelector('.typing-animation');
+    if (!codeElement) return;
+
     const lines = [
         "class EnzzoSoftDev {",
-            " constructor() {",
-            " this.visao = 'Excelência em software';",
-            "this.especialidade = 'Web & APIs';",
-            "  }",
+        " constructor() {",
+        " this.visao = 'Excelência em software';",
+        " this.especialidade = 'Web & APIs';",
+        "  }",
         "}"
-
     ];
 
     let lineIndex = 0;
@@ -161,87 +148,40 @@ function typeCode() {
     typeLine();
 }
 
-// Service cards hover effect
+// Efeito hover nos cards de serviço
 document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
+    card.addEventListener('mouseenter', function () {
         this.style.transform = 'translateY(-20px) scale(1.02)';
     });
-
-    card.addEventListener('mouseleave', function() {
+    card.addEventListener('mouseleave', function () {
         this.style.transform = 'translateY(0) scale(1)';
     });
 });
 
-// Portfolio items hover effect
+// Efeito hover nos itens do portfólio
 document.querySelectorAll('.portfolio-item').forEach(item => {
-    item.addEventListener('mouseenter', function() {
+    item.addEventListener('mouseenter', function () {
         const image = this.querySelector('.portfolio-image');
-        image.style.transform = 'scale(1.1)';
+        if (image) image.style.transform = 'scale(1.1)';
     });
-
-    item.addEventListener('mouseleave', function() {
+    item.addEventListener('mouseleave', function () {
         const image = this.querySelector('.portfolio-image');
-        image.style.transform = 'scale(1)';
+        if (image) image.style.transform = 'scale(1)';
     });
 });
 
-// Parallax effect for hero section
+// Parallax no hero
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const heroContent = document.querySelector('.hero-content');
     const heroVisual = document.querySelector('.hero-visual');
 
-    if (heroContent && heroVisual) {
-        heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
-        heroVisual.style.transform = `translateY(${scrolled * 0.3}px)`;
-    }
+    if (heroContent) heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+    if (heroVisual) heroVisual.style.transform = `translateY(${scrolled * 0.3}px)`;
 });
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    typeCode();
-    const form = document.getElementById('contactForm');
-    if (form) {
-        form.addEventListener('submit', () => {
-            const submitBtn = form.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                submitBtn.textContent = 'Enviando...';
-                submitBtn.disabled = true;
-            }
-        });
-    }
-});
-
-// Update active nav item on scroll
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.pageYOffset >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Add loading animation
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
-
-// Smooth reveal animation
+// Animação de revelação suave
 const revealElements = document.querySelectorAll('.service-card, .portfolio-item, .contact-item');
-
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
@@ -260,6 +200,8 @@ revealElements.forEach(element => {
     element.style.transition = 'all 0.6s ease';
     revealObserver.observe(element);
 });
+
+// Classes para partículas (faíscas)
 class Spark {
     constructor(container) {
         this.container = container;
@@ -281,6 +223,7 @@ class Spark {
 class SparkGenerator {
     constructor(containerId, interval = 100) {
         this.container = document.getElementById(containerId);
+        if (!this.container) return;
         this.interval = interval;
         this.start();
     }
@@ -292,9 +235,7 @@ class SparkGenerator {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    new SparkGenerator('sparkContainer', 100);
-});
+// Classes para raios
 class LightningBolt {
     constructor(svg) {
         this.svg = svg;
@@ -338,6 +279,7 @@ class LightningBolt {
 class LightningStorm {
     constructor(svgId, minDelay = 2000, maxDelay = 6000) {
         this.svg = document.getElementById(svgId);
+        if (!this.svg) return;
         this.minDelay = minDelay;
         this.maxDelay = maxDelay;
         this.scheduleNext();
@@ -352,14 +294,12 @@ class LightningStorm {
     }
 }
 
-// Inicialização junto com as faíscas
-document.addEventListener('DOMContentLoaded', () => {
-    new SparkGenerator('sparkContainer', 100);
-    new LightningStorm('lightningCanvas');
-});
+// Efeito de descriptografia (decrypt effect)
 function decryptTextEffect(elementId, finalText, speed = 50) {
     const chars = '!@#$%^&*()_+{}[]<>?|;:abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     const element = document.getElementById(elementId);
+    if (!element) return;
+
     let iteration = 0;
 
     const interval = setInterval(() => {
@@ -383,22 +323,16 @@ function decryptTextEffect(elementId, finalText, speed = 50) {
     }, speed);
 }
 
-// Executa o efeito ao carregar a página
-document.addEventListener('DOMContentLoaded', () => {
-    const logo = document.getElementById('logoTitle');
-    const originalText = logo.textContent;
-    decryptTextEffect('logoTitle', originalText, 60);
-});
-function typeCodeEffect(elementId, speed = 40) {
-    const el = document.getElementById(elementId);
-    const text = el.getAttribute('data-text');
-    let index = 0;
+// Efeito digitação para código Java
+function typeJavaCodeEffect(targetId, code, speed = 20) {
+    const el = document.getElementById(targetId);
+    if (!el) return;
+    let i = 0;
 
     function type() {
-        if (index < text.length) {
-            const char = text[index] === '\n' ? '<br>' : text[index] === ' ' ? '&nbsp;' : text[index];
-            el.innerHTML += char;
-            index++;
+        if (i < code.length) {
+            el.textContent += code.charAt(i);
+            i++;
             setTimeout(type, speed);
         }
     }
@@ -406,24 +340,46 @@ function typeCodeEffect(elementId, speed = 40) {
     type();
 }
 
-// Rodar ao carregar
-document.addEventListener('DOMContentLoaded', () => {
-    typeCodeEffect('typingTarget', 40);
+// Atualiza item ativo do menu com base no scroll
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
-    // (manter seus outros efeitos se tiver)
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= (sectionTop - 200)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Adiciona classe 'loaded' após carregamento completo para animação
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
+
+// Inicialização após o DOM estar carregado
+document.addEventListener('DOMContentLoaded', () => {
+    // Partículas e raios
     new SparkGenerator('sparkContainer', 100);
     new LightningStorm('lightningCanvas');
-    decryptTextEffect('logoTitle', "Enzzo'SoftDev", 60);
 
-    // Observer para ativar a descriptografia no rodapé quando ele entrar na tela
-    const footer = document.getElementById('footerText');
-    const footerObserver = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-        decryptTextEffect('footerText', footer.textContent, 50);
-        footerObserver.disconnect(); // só uma vez
+    // Efeito decrypt no logo
+    const logo = document.getElementById('logoTitle');
+    if (logo) {
+        decryptTextEffect('logoTitle', logo.textContent, 60);
     }
-    });
-    footerObserver.observe(footer);
+
+    // Efeito digitação de código Java
     const javaCodeSample = `public class HelloWorld {
     public static void main(String[] args) {
         System.out.println("Bem-vindo à Enzzo'SoftDev!");
@@ -433,55 +389,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 }`;
-
-function typeJavaCodeEffect(targetId, code, speed = 20) {
-    const el = document.getElementById(targetId);
-    let i = 0;
-
-    function type() {
-        if (i < code.length) {
-            el.textContent += code.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-
-    type();
-}
-
-// No final do DOMContentLoaded
-typeJavaCodeEffect("javaCode", javaCodeSample);
-
-});
-const javaCodeSample = `public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Bem-vindo à Enzzo'SoftDev!");
-
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Linha de código: " + i);
-        }
-    }
-}`;
-
-function typeJavaCodeEffect(targetId, code, speed = 20) {
-    const el = document.getElementById(targetId);
-    let i = 0;
-
-    function type() {
-        if (i < code.length) {
-            el.textContent += code.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-
-    type();
-}
-
-document.addEventListener('DOMContentLoaded', () => {
     typeJavaCodeEffect("javaCode", javaCodeSample, 25);
-    decryptTextEffect('logoTitle', "Enzzo'SoftDev", 60);
-    new SparkGenerator('sparkContainer', 100);
-    new LightningStorm('lightningCanvas');
-});
 
+    // Form submit handler
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', () => {
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.textContent = 'Enviando...';
+                submitBtn.disabled = true;
+            }
+        });
+    }
+
+    // Observer para descriptografia no rodapé
+    const footer = document.getElementById('footerText');
+    if (footer) {
+        const footerObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                decryptTextEffect('footerText', footer.textContent, 50);
+                footerObserver.disconnect();
+            }
+        });
+        footerObserver.observe(footer);
+    }
+
+    // Animação de digitação no container `.typing-animation`
+    typeCode();
+});
