@@ -379,18 +379,6 @@ document.addEventListener('DOMContentLoaded', () => {
         decryptTextEffect('logoTitle', logo.textContent, 60);
     }
 
-    // Efeito digitação de código Java
-    const javaCodeSample = `public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Bem-vindo à Enzzo'SoftDev!");
-
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Linha de código: " + i);
-        }
-    }
-}`;
-    typeJavaCodeEffect("javaCode", javaCodeSample, 25);
-
     // Form submit handler
     const form = document.getElementById('contactForm');
     if (form) {
@@ -402,7 +390,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
     // Observer para descriptografia no rodapé
     const footer = document.getElementById('footerText');
     if (footer) {
