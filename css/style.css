@@ -1009,3 +1009,27 @@ footer {
   position: relative;
   z-index: 2;
 }
+.gallery {
+  display: flex;
+  flex-direction: column; /* Coloca uma imagem por linha */
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.gallery img {
+  width: 100%;
+  max-width: 95vw; /* 95% da largura da janela */
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+}

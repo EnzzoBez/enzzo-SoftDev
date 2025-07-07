@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projeto: Sistema de Gestão de Restaurantes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .logo {
+      color: #00ff88;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+    }
+
+    h1, h2 {
+      color: #00ff88;
+      margin-bottom: 1rem;
+    }
+
+    p, li {
+      line-height: 1.6;
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+    }
+
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 1rem;
+      }
+
+      .gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .gallery img {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">← Voltar para o site</a>
+  </header>
+
+  <main>
+    <h1>Sistema de Gestão de Restaurantes (SGR)</h1>
+    <p>Este sistema foi desenvolvido para facilitar o controle operacional de restaurantes de pequeno a grande porte. O sistema oferece funcionalidades como controle de pedidos, gestão de estoque, visualização de relatórios financeiros, gerenciamento de equipe e muito mais.</p>
+
+    <h2>Tecnologias utilizadas</h2>
+    <ul>
+      <li><strong>PHP com Laravel</strong>: Linguagem de programação back-end amplamente utilizada na web, com o Laravel oferecendo um framework moderno e robusto para desenvolvimento rápido, seguro e estruturado de aplicações web.</li>
+
+      <li><strong>Banco de dados MySQL</strong>: Sistema de gerenciamento de banco de dados relacional usado para armazenar e organizar todas as informações do sistema, como pedidos, produtos, usuários e relatórios.</li>
+
+      <li><strong>JavaScript e AJAX</strong>: JavaScript é uma linguagem de programação voltada para o front-end interativo. Com o uso de AJAX (Asynchronous JavaScript and XML), o sistema realiza requisições assíncronas ao servidor, permitindo uma experiência mais fluida e sem recarregamento de página.</li>
+
+      <li><strong>HTML e CSS</strong>: HTML estrutura todo o conteúdo da interface do sistema, enquanto o CSS estiliza os elementos com cores, espaçamentos, animações e responsividade, garantindo uma interface moderna e adaptável a qualquer tela.</li>
+    </ul>
+
+
+    <h2>Galeria do Projeto</h2>
+    <div class="gallery">
+      <img src="../VDO/PAINEL.png" alt="Tela Inicial do Sistema">
+      <img src="../VDO/REALIZAR PEDIDO.png" alt="Tela de Realização de Pedidos">
+      <img src="../VDO/RELATORIO.png" alt="Tela de Relatórios Gerenciais">
+      <img src="../VDO/GERENP.png" alt="Gerenciamento de Produtos">
+      <img src="../VDO/PEDICOZI.png" alt="Pedidos na Cozinha">
+      <img src="../VDO/PAG1.png" alt="Tela de Pagamento - Etapa 1">
+      <img src="../VDO/PAG2.png" alt="Tela de Pagamento - Etapa 2">
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Enzzo'SoftDev - Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
