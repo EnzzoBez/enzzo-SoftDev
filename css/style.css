@@ -1008,20 +1008,25 @@ footer {
     50% { opacity: 0; } /* Invisível na metade do ciclo */
 }
 /* === Fundo de Código Java - cores em branco === */
+/* === Fundo de Código Java - Efeito visível e sutil === */
 .java-code-background {
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.1; /* um pouco mais visível */
+  opacity: 0.25; /* mais visível */
   font-family: 'Fira Code', monospace;
   pointer-events: none;
   padding: 2rem;
-  color: #ffffff; /* branco puro */
-  font-size: 13px;
+  color: #ffffff;
+  font-size: 15px; /* um pouco maior */
   white-space: pre-wrap;
-  line-height: 1.6;
-  text-shadow: 0 0 5px rgb(255, 255, 255), 0 0 10px rgba(200, 200, 200, 0.4);
+  line-height: 1.7;
+  text-shadow:
+    0 0 3px rgba(255, 255, 255, 0.5),
+    0 0 6px rgba(255, 0, 0, 0.3),
+    0 0 10px rgba(255, 0, 0, 0.2); /* leve tom avermelhado para contraste */
   overflow: hidden;
+  filter: brightness(1.2) saturate(1.2); /* melhora a nitidez */
 }
 
 
