@@ -114,7 +114,7 @@ function typeCode() {
         "class EnzzoSoftDev {",
         " constructor() {",
         " this.visao = 'Excelência em software';",
-        " this.especialidade = 'Web & APIs';",
+        " this.especialidade =, 'Web & APIs';",
         "  }",
         "}"
     ];
