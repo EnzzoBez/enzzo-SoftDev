@@ -1020,7 +1020,7 @@ footer {
   font-size: 13px;
   white-space: pre-wrap;
   line-height: 1.6;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(200, 200, 200, 0.4);
+  text-shadow: 0 0 5px rgb(255, 255, 255), 0 0 10px rgba(200, 200, 200, 0.4);
   overflow: hidden;
 }
 
@@ -1044,7 +1044,7 @@ footer {
 }
 
 .gallery img {
-  width: 100%;
+  width: 150%;
   max-width: 95vw; /* 95% da largura da janela */
   height: auto;
   border-radius: 16px;
