@@ -6,17 +6,10 @@
     <title>Enzzo'SoftDev - Desenvolvimento de Software Profissional</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">    
     <link rel="icon" type="image/png" href="VDO/logo.png" />    
-    <link rel="stylesheet" href="css/style.css"> 
-    <!-- Prism para Java -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Particles Background -->
-<div class="spark-container" id="sparkContainer"></div>
-<!-- Spark Effect -->
 <div class="spark-container" id="sparkContainer"></div>
 <!-- Raios SVG -->
 <svg id="lightningCanvas" class="lightning-canvas"></svg>
@@ -28,7 +21,7 @@
                 <li><a href="#home">Início</a></li>
                 <li><a href="#about">Sobre</a></li>
                 <li><a href="#services">Serviços</a></li>
-                <li><a href="projetos/sgr.html">Portfólio</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
                 <li><a href="#contact">Contato</a></li>
             </ul>
             <div class="mobile-menu">
@@ -36,11 +29,6 @@
             </div>
         </nav>
     </header>
-        <!-- Fundo de código Java simulado -->
-    <div class="java-code-background">
-        <pre><code class="language-java" id="javaCode"></code></pre>
-    </div>
-
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
@@ -53,7 +41,7 @@
                     <p class="subtitle">Transformando ideias em soluções digitais inovadoras com tecnologia de ponta.</p>
                     <div class="cta-buttons">
                         <a href="#contact" class="btn btn-primary">Iniciar Projeto</a>
-                        <a href="projetos/sgr.html" class="btn btn-secondary">Ver Portfólio</a>
+                        <a href="#portfolio" class="btn btn-secondary">Ver Portfólio</a>
                     </div>
                 </div>
                 <div class="hero-visual">
@@ -64,7 +52,7 @@
                             <div class="window-dot dot-green"></div>
                         </div>
                         <div class="code-content">
-                            <div class="typing-animation">
+                            <div class="typing-animation"></div>
                         </div>
                     </div>
                 </div>
@@ -86,11 +74,11 @@
                 </div>
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <span class="stat-number">10+</span>
+                        <span class="stat-number">5+</span>
                         <span>Projetos Entregues</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">2</span>
+                        <span class="stat-number">3</span>
                         <span>Anos de Experiência</span>
                     </div>
                     <div class="stat-item">
@@ -115,40 +103,46 @@
                     <div class="service-icon">
                         <i class="fas fa-code"></i>
                     </div>
-                        <h3 class="service-title">Desenvolvimento Web </h3>
-                        <p>Full Stack</p>
-                        <p>Criação completa de aplicações web  front-end ao back-end, com tecnologias modernas, responsivas e de alta performance.</p>
-                    </div>
+                    <h3 class="service-title">Desenvolvimento Web Full Stack</h3>
+                    <p class="service-desc">Site institucional ou landing page, do front-end ao back-end, responsivo e otimizado.</p>
+                    <p class="service-price">A partir de R$ 1.600</p>
+                    <a href="#contact" class="btn btn-secondary btn-small">Solicitar orçamento</a>
+                </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-code-fork"></i>
                     </div>
-                    <h3 class="service-title">Sistemas Locais</h3>
-                    <p>Full Stack</p>
-                    <p>Desenvolvemos sistemas personalizados para rodar diretamente na sua rede local sem depender da internet.</p>
+                    <h3 class="service-title">Sistemas Sob Medida</h3>
+                    <p class="service-desc">Sistemas de gestão personalizados para o seu negócio, na web ou em rede local.</p>
+                    <p class="service-price">A partir de R$ 2.500</p>
+                    <a href="#contact" class="btn btn-secondary btn-small">Solicitar orçamento</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3 class="service-title">Segurança & Performance</h3>
-                    <p>Otimização e implementação de medidas de segurança avançadas.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="service-title">Aplicativos Mobile </h3>
-                    <p>(Em aprimoramento)</p>
-                    <p>Apps nativos e híbridos para iOS e Android com performance excepcional.</p>
+                    <p class="service-desc">Auditoria, otimização e implementação de medidas de segurança em sistemas já existentes.</p>
+                    <p class="service-price">A partir de R$ 500</p>
+                    <a href="#contact" class="btn btn-secondary btn-small">Solicitar orçamento</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-database"></i>
                     </div>
-                    <h3 class="service-title"> APIs </h3>
-                    <p>(Em aprimoramento)</p>
-                    <p>Arquiteturas robustas e APIs RESTful para suportar suas aplicações.</p>
+                    <h3 class="service-title">APIs & Integrações</h3>
+                    <p class="service-desc">Arquiteturas robustas e APIs RESTful para conectar seus sistemas e aplicações.</p>
+                    <p class="service-price">A partir de R$ 800</p>
+                    <a href="#contact" class="btn btn-secondary btn-small">Solicitar orçamento</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="service-title">Aplicativos Mobile</h3>
+                    <p class="service-desc">Apps híbridos para iOS e Android. Serviço em fase de aprimoramento.</p>
+                    <p class="service-price">Sob consulta</p>
+                    <a href="#contact" class="btn btn-secondary btn-small">Solicitar orçamento</a>
                 </div>
             </div>
         </div>
@@ -160,18 +154,51 @@
             <h2 class="section-title">Portfólio</h2>
             <div class="portfolio-grid">
             <div class="portfolio-item">
-                <a href="projetos/sgr.html" class="portfolio-link">
+                <a href="projetos/cutterz.html" class="portfolio-link">
                 <div class="portfolio-image">
-                    <i class=""></i>
+                    <i class="fas fa-scissors"></i>
                 </div>
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title"></h3>
-                    <p></p>
+                    <h3 class="portfolio-title">Cutterz</h3>
+                    <p>SaaS de gestão para barbearias: agendamento online, comandas, estoque e notificações push.</p>
                     <div class="portfolio-tags">
-                    <span class="tag"></span>
-                    <span class="tag"></span>
-                    <span class="tag"></span>
-                    <span class="tag"></span>
+                    <span class="tag">PHP</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">PWA</span>
+                    <span class="tag">SaaS</span>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="portfolio-item">
+                <a href="projetos/pontobeer.html" class="portfolio-link">
+                <div class="portfolio-image">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">PontoBeer</h3>
+                    <p>Sistema de pedidos e delivery para restaurante, com painel admin em tempo real e cardápio digital.</p>
+                    <div class="portfolio-tags">
+                    <span class="tag">PHP</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">Tempo Real</span>
+                    <span class="tag">Delivery</span>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="portfolio-item">
+                <a href="projetos/lb-arquitetura.html" class="portfolio-link">
+                <div class="portfolio-image">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">LB Arquitetura e Interiores</h3>
+                    <p>Redesign completo de site institucional com estética editorial de luxo para escritório de arquitetura.</p>
+                    <div class="portfolio-tags">
+                    <span class="tag">HTML/CSS</span>
+                    <span class="tag">Design</span>
+                    <span class="tag">Responsivo</span>
                     </div>
                 </div>
                 </a>
@@ -185,7 +212,31 @@
     <section id="contact" class="contact animate-on-scroll">
         <div class="container">
             <h2 class="section-title">Entre em Contato</h2>
-                <div class="contact-form"></div>
+            <div class="contact-content">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="servico">Serviço de interesse</label>
+                        <select id="servico" name="servico" required>
+                            <option value="">Selecione...</option>
+                            <option value="Desenvolvimento Web Full Stack">Desenvolvimento Web Full Stack</option>
+                            <option value="Sistemas Sob Medida">Sistemas Sob Medida</option>
+                            <option value="Segurança & Performance">Segurança & Performance</option>
+                            <option value="APIs & Integrações">APIs & Integrações</option>
+                            <option value="Aplicativo Mobile">Aplicativo Mobile</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar via WhatsApp</button>
+                </form>
+                <div class="contact-info">
                     <div class="contact-item">
                         <i class="contact-icon fas fa-envelope"></i>
                         <div>

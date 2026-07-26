@@ -40,15 +40,36 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Formulário: botão "Enviando..." ao submeter
+// Formulário: monta a mensagem e envia direto para o WhatsApp
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', () => {
+    contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         if (submitBtn) {
             submitBtn.textContent = 'Enviando...';
             submitBtn.disabled = true;
         }
+
+        const nome = contactForm.querySelector('#nome').value.trim();
+        const servico = contactForm.querySelector('#servico').value;
+        const mensagem = contactForm.querySelector('#mensagem').value.trim();
+
+        const texto =
+            `Olá! Meu nome é ${nome}.\n` +
+            `Tenho interesse em: ${servico}.\n` +
+            `Mensagem: ${mensagem}`;
+
+        const numeroWhatsapp = '5554999607703';
+        const link = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(texto)}`;
+
+        window.open(link, '_blank');
+
+        if (submitBtn) {
+            submitBtn.textContent = 'Enviar via WhatsApp';
+            submitBtn.disabled = false;
+        }
+        contactForm.reset();
     });
 }
 
@@ -379,17 +400,6 @@ document.addEventListener('DOMContentLoaded', () => {
         decryptTextEffect('logoTitle', logo.textContent, 60);
     }
 
-    // Form submit handler
-    const form = document.getElementById('contactForm');
-    if (form) {
-        form.addEventListener('submit', () => {
-            const submitBtn = form.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                submitBtn.textContent = 'Enviando...';
-                submitBtn.disabled = true;
-            }
-        });
-    }
     // Observer para descriptografia no rodapé
     const footer = document.getElementById('footerText');
     if (footer) {
